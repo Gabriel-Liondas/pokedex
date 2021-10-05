@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect,  useState } from 'react';
-import { Form, Imagem, Cabecalho } from './styles';
+import { Form, Imagem, Cabecalho, MainPkm } from './styles';
 import { HiSearch } from 'react-icons/hi';
-import pokebolinha from '../assets/pokebolinha.png'
+import pokebolinha from '../assets/pokebolinha.png';
 import api from '../services/api';
 
 interface Pokemon {
@@ -46,9 +46,10 @@ return (
                 />
 				<button type='submit'><HiSearch className='search-icon' size="40px"/></button>
 		</Form>
-        
-        <Imagem src={pokemonIMG} alt="charmander" />
-        <Cabecalho>{pokemonName}</Cabecalho>
+        <MainPkm>
+            <Cabecalho>{pokemonName}</Cabecalho>
+            <Imagem src={pokemonIMG} alt="charmander" />
+        </MainPkm>
     </>
 );
 };

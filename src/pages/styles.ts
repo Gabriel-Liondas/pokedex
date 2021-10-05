@@ -45,19 +45,21 @@ export const Form = styled.form`
     }
 `;
 export const Cabecalho = styled.h1`
-    margin-top: 40px;
     font: bold 3rem 'Gemunu Libre', sans-serif;
     max-width: 1000px;
+    text-align: center;
     width: 280px;
-    position: fixed;
-    top: 130px;
 `;
 export const Imagem = styled.img`
-    margin-top: 40px;
+    margin-top: 30px;
     max-width: 1000px;
     width: 280px;
-    position: fixed;
-    top: 210px;
-    left: 200px;
 `;
 
+export const MainPkm = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 190px;
+    left: 180px;
+`;
