@@ -10,11 +10,12 @@ export default createGlobalStyle `
     }
 
     body {
-    background: #F2F2FA url(${pokebacground}) no-repeat;
-    background-size: 1400px 600px;
+    background: #8a2d19 url(${pokebacground}) no-repeat;
+    background-size: 1325px 650px;
+    }
 
     body, input, button {
-    font: 1rem 'Roboto', sans-serif;}
+    font: 2rem 'Gemunu Libre', sans-serif;}
 
     #root {
         max-width: 960px;
@@ -25,4 +26,4 @@ export default createGlobalStyle `
     button {
         cursor: pointer;
     }
-`;
+`

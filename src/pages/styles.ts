@@ -1,18 +1,13 @@
 import styled, { css } from "styled-components";
 import { shade } from 'polished';
 
-
-export const Title = styled.h1`
-    font-size: 48px;
-    color: #3a3a3a;
-    margin-top: 80px;
-	max-width: 450px;
-	line-height: 56px;
-`;
-
 export const Form = styled.form`
     margin-top: 40px;
-    max-width: 700px;
+    max-width: 1000px;
+    width: 600px;
+    position: fixed;
+    top: 0px;
+    left: 90px;
     display: flex;
 
     input {
@@ -21,7 +16,7 @@ export const Form = styled.form`
         padding: 0 24px;
         border: 2px solid #fff;
         border-right: none;
-        border-radius: 5px 0 0 5px;
+        border-radius: 20px 0 0 20px;
         color: #3a3a3a;
 
         &::placeholder {
@@ -30,18 +25,39 @@ export const Form = styled.form`
     }
 
     button {
-    width: 210px;
+    width: 70px;
     height: 70px;
-    background: #04d361;
     border: none; 
-    border-radius: 0 5px 5px 0;
-    color: #fff;
+    border-radius: 0 20px 20px 0;
+    color: #3a3a3a;
     font-weight: 700;
-    transition: background-color 0.2s;
+    background: white;
+
+    .search-icon{
+        color: #423B3B;
+        transition: all .1s ease-in-out;
 
         &:hover {
-            background: ${shade(0.2, '#04d361')}
-        }
+                transform:scale(110%);
+                
+            }
     }
+    }
+`;
+export const Cabecalho = styled.h1`
+    margin-top: 40px;
+    font: bold 3rem 'Gemunu Libre', sans-serif;
+    max-width: 1000px;
+    width: 280px;
+    position: fixed;
+    top: 130px;
+`;
+export const Imagem = styled.img`
+    margin-top: 40px;
+    max-width: 1000px;
+    width: 280px;
+    position: fixed;
+    top: 210px;
+    left: 200px;
 `;
 
