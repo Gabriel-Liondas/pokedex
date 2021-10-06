@@ -1,8 +1,10 @@
 import React, { FormEvent, useEffect,  useState } from 'react';
-import { Form, Imagem, Cabecalho, MainPkm } from './styles';
+import { Form, Imagem, MainPkm, InfoPkm, Infoh1 } from './styles';
 import { HiSearch } from 'react-icons/hi';
-import pokebolinha from '../assets/pokebolinha.png';
+import pokebolinha from '../assets/pokebolinha.gif';
 import api from '../services/api';
+import styled, { css } from "styled-components";
+
 
 interface Pokemon {
         species: {
@@ -11,31 +13,67 @@ interface Pokemon {
         sprites: {
             front_default: string;
             }
+        types : [ {slot: number,
+            type: {
+                name: string
+            }},
+        {   slot: number,
+            type: {
+                name: string
+            }}
+        ]
     }
+    
+interface Species {
+    color: {
+        name: string
+    }
+}
+
 
 
 
 const Pokedex: React.FC = () => {
     const [newPokemon, setNewPokemon] = useState('');
     const [pokemonIMG, setPokemonIMG] = useState(pokebolinha);
-    const [pokemonName, setPokemonName] = useState('');
+    const [pokemonName, setPokemonName] = useState('loading...');
+    const [pokemonType, setPokemonType] = useState('');
+    const [corNome, setcorNome] = useState('');
+
+    
     async function getPokemon(event : FormEvent){
         event.preventDefault();
         const response = await api.get<Pokemon>(`pokemon/${newPokemon}`);
-        console.log(typeof(response))
-        console.log(response.data)
-        const pokemon = response.data;
-        setPokemonIMG(pokemon.sprites.front_default)
-        setPokemonName(pokemon.species.name)
+        const speciesResponse = await api.get<Species>(`pokemon-species/${newPokemon}`);
 
-        console.log(typeof(pokemon))
+        const pokemon = response.data;
+        const pokemonTypeOne = pokemon.types[0].type.name;
 
         
+        setPokemonIMG(pokemon.sprites.front_default)
+        setPokemonName(`${pokemon.species.name}`)
+        setcorNome( speciesResponse.data.color.name)
 
-        setNewPokemon('')
+        if (pokemon.types.length > 1) {
+            const pokemonTypeTwo = pokemon.types[1].type.name;
+            setPokemonType(`${pokemonTypeOne} - ${pokemonTypeTwo}`)
+        } else {
+            setPokemonType(`${pokemonTypeOne}`)
+            
+        }
+        
     }
 
+    const Cabecalho = styled.h1`
+    font: bold #fff 3rem 'Gemunu Libre', sans-serif;
+    max-width: 1000px;
+    text-align: center;
+    width: 280px;
+    text-transform: capitalize;
+    color= #fff;
+`;
 return (
+
     <>
         <Form onSubmit={getPokemon}>
 				<input
@@ -47,11 +85,18 @@ return (
 				<button type='submit'><HiSearch className='search-icon' size="40px"/></button>
 		</Form>
         <MainPkm>
-            <Cabecalho>{pokemonName}</Cabecalho>
+            <Cabecalho >{pokemonName}</Cabecalho>
             <Imagem src={pokemonIMG} alt="charmander" />
         </MainPkm>
+        <InfoPkm>
+            <Infoh1>Tipo: &#9; {pokemonType}</Infoh1>
+            <Infoh1>Info: </Infoh1>
+            <Infoh1>Evolution: </Infoh1>
+        </InfoPkm>
+
     </>
 );
+
 };
 
 export default Pokedex;

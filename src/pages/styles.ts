@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 import { shade } from 'polished';
+import api from "../services/api";
+import Pokedex from "./pokedex";
+import React from "react";
+
 
 export const Form = styled.form`
     margin-top: 40px;
@@ -44,12 +48,7 @@ export const Form = styled.form`
     }
     }
 `;
-export const Cabecalho = styled.h1`
-    font: bold 3rem 'Gemunu Libre', sans-serif;
-    max-width: 1000px;
-    text-align: center;
-    width: 280px;
-`;
+
 export const Imagem = styled.img`
     margin-top: 30px;
     max-width: 1000px;
@@ -62,4 +61,20 @@ export const MainPkm = styled.div`
     position: absolute;
     top: 190px;
     left: 180px;
+`;
+
+export const InfoPkm = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 190px;
+    left: 650px;
+`;
+
+export const Infoh1 = styled.p`
+    font: bold 3rem 'Gemunu Libre', sans-serif;
+    margin: 15px 0;
+    text-align: left;
+    width: 500px;
+    text-transform: capitalize;
 `;
