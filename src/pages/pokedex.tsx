@@ -64,11 +64,13 @@ return (
             <Cabecalho>{pokemonName}</Cabecalho>
             <Imagem src={pokemonIMG} alt="charmander" />
         </MainPkm>
+
         <InfoPkm>
             <Infoh1>Tipo: &#9; {pokemonType}</Infoh1>
             <Infoh1>Info: </Infoh1>
             <Infoh1>Evolution: </Infoh1>
         </InfoPkm>
+
     </>
 );
 };
