@@ -1,5 +1,6 @@
 import React, { FormEvent, useEffect,  useState } from 'react';
 import { Form, Imagem, MainPkm, InfoPkm, Infoh1 } from './styles';
+
 import { HiSearch } from 'react-icons/hi';
 import pokebolinha from '../assets/pokebolinha.gif';
 import api from '../services/api';
@@ -22,11 +23,13 @@ interface Pokemon {
                 name: string
             }}
         ]
+
     }
     
 interface Species {
     color: {
         name: string
+
     }
 }
 
@@ -38,6 +41,7 @@ const Pokedex: React.FC = () => {
     const [pokemonIMG, setPokemonIMG] = useState(pokebolinha);
     const [pokemonName, setPokemonName] = useState('loading...');
     const [pokemonType, setPokemonType] = useState('');
+
     const [corNome, setcorNome] = useState('');
 
     
@@ -64,6 +68,7 @@ const Pokedex: React.FC = () => {
         
     }
 
+
     const Cabecalho = styled.h1`
     font: bold #fff 3rem 'Gemunu Libre', sans-serif;
     max-width: 1000px;
@@ -88,6 +93,7 @@ return (
             <Cabecalho >{pokemonName}</Cabecalho>
             <Imagem src={pokemonIMG} alt="charmander" />
         </MainPkm>
+
         <InfoPkm>
             <Infoh1>Tipo: &#9; {pokemonType}</Infoh1>
             <Infoh1>Info: </Infoh1>

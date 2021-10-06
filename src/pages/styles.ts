@@ -76,5 +76,8 @@ export const Infoh1 = styled.p`
     margin: 15px 0;
     text-align: left;
     width: 500px;
+<<<<<<< HEAD
     text-transform: capitalize;
+=======
+>>>>>>> 3f371e9d0f1796f64b1db11804b1a8f49428ad2c
 `;
