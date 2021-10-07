@@ -1,5 +1,6 @@
 import React, { FormEvent, useEffect,  useState } from 'react';
 import { Form, Imagem, MainPkm, InfoPkm, Infoh1, TypeInfo } from './styles';
+
 import { HiSearch } from 'react-icons/hi';
 import pokebolinha from '../assets/pokebolinha.gif';
 import api from '../services/api';
@@ -23,8 +24,14 @@ interface Pokemon {
             type: {
                 name: string
             }}
-            ]
-        }
+        ]
+    }
+    
+interface Species {
+    color: {
+        name: string
+    }
+}
 
 interface Species {
     color: {
@@ -37,6 +44,7 @@ const Pokedex: React.FC = () => {
     const [pokemonName, setPokemonName] = useState('waiting...');
     const [pokemonType, setPokemonType] = useState(' ...');
     const [corNome, setcorNome] = useState('black');
+
     
     async function getPokemon(event : FormEvent){
         event.preventDefault();
@@ -56,6 +64,7 @@ const Pokedex: React.FC = () => {
         if (pokemon.sprites.versions['generation-v']['black-white'].animated.front_default === null) {
             setPokemonIMG(pokemon.sprites.front_default)
         }
+
 
         if (pokemon.types.length > 1) {
             const pokemonTypeTwo = pokemon.types[1].type.name;

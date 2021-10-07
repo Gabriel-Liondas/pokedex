@@ -37,8 +37,7 @@ export const Form = styled.form`
         transition: all .1s ease-in-out;
 
         &:hover {
-                transform:scale(110%);
-                
+                transform:scale(110%);                
         }}}
 `;
 
@@ -72,7 +71,7 @@ export const Infoh1 = styled.p`
     text-align: left;
     width: 500px;
     text-transform: capitalize;
-`;
+    `
 
 export const TypeInfo = styled.p`
     font: bold 2rem 'Gemunu Libre', sans-serif;
