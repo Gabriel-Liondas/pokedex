@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { shade } from 'polished';
+
 
 export const Form = styled.form`
     margin-top: 40px;
@@ -21,8 +21,7 @@ export const Form = styled.form`
 
         &::placeholder {
             color: #a8a8b3;;
-        }
-    }
+        }}
 
     button {
     width: 70px;
@@ -40,25 +39,20 @@ export const Form = styled.form`
         &:hover {
                 transform:scale(110%);
                 
-            }
-    }
-    }
+        }}}
 `;
-export const Cabecalho = styled.h1`
-    font: bold 3rem 'Gemunu Libre', sans-serif;
-    max-width: 1000px;
-    text-align: center;
-    width: 280px;
-`;
+
 export const Imagem = styled.img`
     margin-top: 30px;
-    max-width: 1000px;
+    max-width: 250px;
+    max-height: 250px;
     width: 280px;
 `;
 
 export const MainPkm = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: absolute;
     top: 190px;
     left: 180px;
@@ -73,8 +67,17 @@ export const InfoPkm = styled.div`
 `;
 
 export const Infoh1 = styled.p`
-    font: bold 3rem 'Gemunu Libre', sans-serif;
+    font: bold 1.5rem 'Gemunu Libre', sans-serif;
     margin: 15px 0;
     text-align: left;
     width: 500px;
+    text-transform: capitalize;
+`;
+
+export const TypeInfo = styled.p`
+    font: bold 2rem 'Gemunu Libre', sans-serif;
+    margin: 15px 0;
+    text-align: left;
+    width: 500px;
+    text-transform: capitalize;
 `;
