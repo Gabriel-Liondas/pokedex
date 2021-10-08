@@ -31,12 +31,10 @@ interface Species {
     color: {
         name: string
     }
+    flavor_text_entries : [{
+        flavor_text : string
+    }]
 }
-
-interface Species {
-    color: {
-        name: string
-    }}
 
 const Pokedex: React.FC = () => {
     const [newPokemon, setNewPokemon] = useState('');
@@ -44,6 +42,7 @@ const Pokedex: React.FC = () => {
     const [pokemonName, setPokemonName] = useState('waiting...');
     const [pokemonType, setPokemonType] = useState(' ...');
     const [corNome, setcorNome] = useState('black');
+    const [infoPkm, setInfoPkm] = useState('...')
 
     
     async function getPokemon(event : FormEvent){
@@ -54,6 +53,7 @@ const Pokedex: React.FC = () => {
         const pokemon = response.data;
         const pokemonTypeOne = pokemon.types[0].type.name;
 
+        setInfoPkm(speciesResponse.data.flavor_text_entries[0].flavor_text)
         setPokemonIMG(pokemon.sprites.versions['generation-v']['black-white'].animated.front_default)
         setPokemonName(`${pokemon.species.name}`)
         setcorNome( speciesResponse.data.color.name)
@@ -78,6 +78,7 @@ const Pokedex: React.FC = () => {
         font: bold #fff 3rem 'Gemunu Libre', sans-serif;
         max-width: 1000px;
         text-align: center;
+        margin-top: 20px;
         width: 280px;
         text-transform: capitalize;
         color: ${corNome};
@@ -100,7 +101,7 @@ const Pokedex: React.FC = () => {
             </MainPkm>
             <InfoPkm>
                 <TypeInfo>Type: &#9; {pokemonType}</TypeInfo>
-                <Infoh1>Info: </Infoh1>
+                <Infoh1>Info: {infoPkm} </Infoh1>
                 <Infoh1>Evolution: </Infoh1>
             </InfoPkm>
         </>

@@ -53,30 +53,37 @@ export const MainPkm = styled.div`
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 190px;
-    left: 180px;
+    top: 160px;
+    border-radius: 30px;
+    height: 400px;
+    width: 450px;
+    background-color: #fff;
+    left: 110px;
 `;
 
 export const InfoPkm = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 190px;
-    left: 650px;
+    height: 400px;
+    border-radius:30px;
+    width: 630px;
+    background-color: #fff;
+    top: 160px;
+    left: 590px;
 `;
 
 export const Infoh1 = styled.p`
     font: bold 1.5rem 'Gemunu Libre', sans-serif;
-    margin: 15px 0;
+    margin: 20px 40px 0 40px;
     text-align: left;
-    width: 500px;
-    text-transform: capitalize;
+    width: 550px;
     `
 
 export const TypeInfo = styled.p`
     font: bold 2rem 'Gemunu Libre', sans-serif;
-    margin: 15px 0;
+    margin: 40px 40px 0 40px;
     text-align: left;
     width: 500px;
-    text-transform: capitalize;
+    text-transform: uppercase;
 `;
