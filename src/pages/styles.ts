@@ -6,7 +6,7 @@ export const Form = styled.form`
     max-width: 1000px;
     width: 600px;
     position: fixed;
-    top: 0px;
+    top: -15px;
     left: 90px;
     display: flex;
 
@@ -53,7 +53,7 @@ export const MainPkm = styled.div`
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 160px;
+    top: 140px;
     border-radius: 30px;
     height: 400px;
     width: 450px;
@@ -69,21 +69,29 @@ export const InfoPkm = styled.div`
     border-radius:30px;
     width: 630px;
     background-color: #fff;
-    top: 160px;
+    top: 140px;
     left: 590px;
 `;
 
 export const Infoh1 = styled.p`
     font: bold 1.5rem 'Gemunu Libre', sans-serif;
-    margin: 20px 40px 0 40px;
+    margin: 40px 40px 0 40px;
     text-align: left;
-    width: 550px;
+    width: 200px;
     `
 
 export const TypeInfo = styled.p`
     font: bold 2rem 'Gemunu Libre', sans-serif;
     margin: 40px 40px 0 40px;
     text-align: left;
-    width: 500px;
+    width: 250px;
     text-transform: uppercase;
+`;
+
+export const Imagemev = styled.img`
+    position: absolute;
+    top: 230px;
+    left: 930px;
+    width: 240px;
+    height: 240px;
 `;

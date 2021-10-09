@@ -1,9 +1,15 @@
 <svg width="1095" height="580" viewBox="0 0 1095 580" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<path d="M549 134V12L1051 12C1067.57 12 1081 25.4314 1081 42V134L549 134Z" fill="#C4C4C4"/>
+<path d="M549 134V12L1064.5 12C1081.07 12 1094.5 25.4314 1094.5 42V134L549 134Z" fill="#2B2B2B"/>
+<rect x="730" y="43.3817" width="13.3818" height="126.869" rx="6.69088" transform="rotate(-90 730 43.3817)" fill="#424242"/>
+<rect x="730" y="69" width="13" height="314" rx="6.5" transform="rotate(-90 730 69)" fill="#424242"/>
 <path d="M449.594 83.4634L1094.52 83.4634V580H449.594L449.594 83.4634Z" fill="#E74B29"/>
 <path d="M449.594 0L687.829 0C704.121 0 717.329 13.2076 717.329 29.5V114.585L449.594 114.585V0Z" fill="#E74B29"/>
 <path d="M0 0L510.213 0L510.213 580H0L0 0Z" fill="#E74B29"/>
 <rect x="613" y="12" width="79" height="79" fill="url(#pattern0)"/>
+<rect x="31" y="565" width="13" height="227" rx="6.5" transform="rotate(-90 31 565)" fill="#2B2B2B"/>
+<rect x="283" y="565" width="13" height="776" rx="6.5" transform="rotate(-90 283 565)" fill="#2B2B2B"/>
+<ellipse cx="51.5" cy="530.5" rx="12.5" ry="11.5" fill="#00FFFF"/>
+<ellipse cx="85.5" cy="530.5" rx="12.5" ry="11.5" fill="#23D33F"/>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0" transform="translate(0 -0.00209205) scale(0.0013947)"/>

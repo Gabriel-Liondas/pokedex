@@ -10,8 +10,8 @@ export default createGlobalStyle `
     }
 
     body {
-    background: #8a2d19 url(${pokebacground}) no-repeat;
-    background-size: 1325px 650px;
+    background: #444 url(${pokebacground}) no-repeat;
+    background-size: 1325px 635px;
     }
 
     body, input, button {
