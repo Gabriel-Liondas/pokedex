@@ -23,7 +23,7 @@ export const Form = styled.form`
             color: #a8a8b3;;
         }}
 
-    button {
+    .search-btn {
     width: 70px;
     height: 70px;
     border: none; 
@@ -38,7 +38,20 @@ export const Form = styled.form`
 
         &:hover {
                 transform:scale(110%);                
-        }}}
+    }}}
+
+    .evolution-btn {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    background-color: #000;
+    cursor: pointer;
+    top: 195px;
+    left: 830px;
+    width: 240px;
+    height: 240px;
+    }
+
 `;
 
 export const Imagem = styled.img`
@@ -77,7 +90,7 @@ export const Infoh1 = styled.p`
     font: bold 1.5rem 'Gemunu Libre', sans-serif;
     margin: 40px 40px 0 40px;
     text-align: left;
-    width: 200px;
+    width: 250px;
     `
 
 export const TypeInfo = styled.p`

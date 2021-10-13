@@ -1,5 +1,5 @@
 import React, { FormEvent, useEffect,  useState } from 'react';
-import { Form, MainPkm, InfoPkm, Infoh1, TypeInfo, Imagem, Imagemev,TextEV } from './styles';
+import { Form, MainPkm, InfoPkm, Infoh1, TypeInfo, Imagem, Imagemev, TextEV } from './styles';
 import { HiSearch } from 'react-icons/hi';
 import pokebolinha from '../assets/pokebolinha.gif';
 import max_lv from '../assets/max-lv.svg';
@@ -53,7 +53,8 @@ const Pokedex: React.FC = () => {
     const [pokemonIMG, setPokemonIMG] = useState(pokebolinha);
     const [pokemonName, setPokemonName] = useState('waiting...');
     const [pokemonType, setPokemonType] = useState('-');
-    const [firstEvolutionImg, setfirstEvolutionImg] = useState(max_lv);
+    const [evolutionIMG, setEvolutionIMG] = useState(max_lv);
+    const [evolutionName, setEvolutionName] = useState('');
     const [corNome, setcorNome] = useState('black');
     const [infoPkm, setInfoPkm] = useState('-')
 
@@ -61,6 +62,16 @@ const Pokedex: React.FC = () => {
     async function getPokemon(event : FormEvent){
         event.preventDefault();
 
+        if (newPokemon === '') {
+            setNewPokemon('')
+            setPokemonIMG(pokebolinha);
+            setPokemonName('waiting...');
+            setPokemonType('-');
+            setEvolutionIMG(max_lv);
+            setEvolutionName('');
+            setcorNome('black');
+            setInfoPkm('-')
+        } else {
         //Pesquisas Api
         const response = await api.get<Pokemon>(`pokemon/${newPokemon}`);
         const speciesResponse = await api.get<Species>(`pokemon-species/${newPokemon}`);
@@ -98,30 +109,38 @@ const Pokedex: React.FC = () => {
 
         
         //setStates evolChain validação
-        console.log(evolChain.evolves_to)
         if (evolChain.evolves_to === undefined) {
-            setfirstEvolutionImg(max_lv)
+            setEvolutionIMG(max_lv)
+            setNewPokemon('')
         } else if (evolChain.evolves_to[0] == null) {
-            setfirstEvolutionImg(max_lv)
+            setEvolutionIMG(max_lv)
+            setNewPokemon('')
         } else if (evolChain.evolves_to[0].evolves_to[0] == null && evolChain.evolves_to[0].species.name != pokemon.species.name) {
             const evolutionChain = await api.get<Pokemon>(`pokemon/${evolChain.evolves_to[0].species.name}`)
-            setfirstEvolutionImg(evolutionChain.data.sprites.front_default)
+            setEvolutionIMG(evolutionChain.data.sprites.front_default)
+            setEvolutionName(evolutionChain.data.species.name)
         } else if (evolChain.evolves_to[0].evolves_to[0] == null && evolChain.evolves_to[0].species.name == pokemon.species.name) {
-            setfirstEvolutionImg(max_lv)
+            setEvolutionIMG(max_lv)
+            setNewPokemon('')
         } else if (evolChain.evolves_to[0].species.name != pokemon.species.name) {
             if (evolChain.evolves_to[0].evolves_to[0].species.name != pokemon.species.name) {
                 const evolutionChain = await api.get<Pokemon>(`pokemon/${evolChain.evolves_to[0].species.name}`)
-                setfirstEvolutionImg(evolutionChain.data.sprites.front_default)
+                setEvolutionIMG(evolutionChain.data.sprites.front_default)
+                setEvolutionName(evolutionChain.data.species.name)
             } else {
-                setfirstEvolutionImg(max_lv)
+                setEvolutionIMG(max_lv)
+                setNewPokemon('')
             }
         } else if (evolChain.evolves_to[0].species.name == pokemon.species.name) {
             const evolutionChain = await api.get<Pokemon>(`pokemon/${evolChain.evolves_to[0].evolves_to[0].species.name}`)
-            setfirstEvolutionImg(evolutionChain.data.sprites.front_default)
+            setEvolutionIMG(evolutionChain.data.sprites.front_default)
+            setEvolutionName(evolutionChain.data.species.name)
         } else {
-            setfirstEvolutionImg(pokebolinha)
-        }
+            setEvolutionIMG(pokebolinha)
+        }}
+        setNewPokemon('')
     }
+
 
         const Cabecalho = styled.h1`
         font: bold #fff 3rem 'Gemunu Libre', sans-serif;
@@ -135,15 +154,7 @@ const Pokedex: React.FC = () => {
 
     return (
         <>
-            <Form onSubmit={getPokemon}>
-                    <input
-                        type='text' 
-                        placeholder='Digite o nome do pokemon' 
-                        value = {newPokemon}
-                        onChange={(e) => setNewPokemon(e.target.value)}
-                    />
-                    <button type='submit'><HiSearch className='search-icon' size="40px"/></button>
-            </Form>
+            
             <MainPkm>
                 <Cabecalho>{pokemonName}</Cabecalho>
                 <Imagem src={pokemonIMG} alt="pokemon" />
@@ -152,8 +163,30 @@ const Pokedex: React.FC = () => {
                 <TypeInfo>Type: {pokemonType}</TypeInfo>
                 <Infoh1>Info: {infoPkm}</Infoh1>
                 <TextEV>Evolves to:</TextEV>
-                <Imagemev src={firstEvolutionImg}/>
+                <Imagemev 
+                    src={evolutionIMG}
+                />
             </InfoPkm>
+            <Form onSubmit={getPokemon}>
+                    <input
+                        type='text' 
+                        placeholder='Digite o nome do pokemon' 
+                        value = {newPokemon.toLowerCase()}
+                        onChange={(e) => setNewPokemon(e.target.value)}
+                        spellCheck= {false}
+                    />
+                    <button 
+                        type='submit'
+                        className='search-btn'>
+                    <HiSearch className='search-icon' size="40px"/>
+                    </button>
+                    <button
+                        className='evolution-btn'
+                        value= {evolutionName}
+                        onClick={(e) => setNewPokemon(evolutionName)}
+                        type='submit'
+                    ></button>
+            </Form>
         </>
     );
 };
