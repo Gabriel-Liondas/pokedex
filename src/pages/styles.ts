@@ -88,10 +88,19 @@ export const TypeInfo = styled.p`
     text-transform: uppercase;
 `;
 
+export const TextEV = styled.p`
+    font: bold 2rem 'Gemunu Libre', sans-serif;
+    position: absolute;
+    top: 40px;
+    left: 370px;
+    text-align: left;
+    width: 250px;
+    text-transform: uppercase;
+`;
 export const Imagemev = styled.img`
     position: absolute;
-    top: 230px;
-    left: 930px;
+    top: 80px;
+    left: 330px;
     width: 240px;
     height: 240px;
 `;

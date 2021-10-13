@@ -1,5 +1,5 @@
 import React, { FormEvent, useEffect,  useState } from 'react';
-import { Form, MainPkm, InfoPkm, Infoh1, TypeInfo, Imagem, Imagemev } from './styles';
+import { Form, MainPkm, InfoPkm, Infoh1, TypeInfo, Imagem, Imagemev,TextEV } from './styles';
 import { HiSearch } from 'react-icons/hi';
 import pokebolinha from '../assets/pokebolinha.gif';
 import max_lv from '../assets/max-lv.svg';
@@ -52,10 +52,10 @@ const Pokedex: React.FC = () => {
     const [newPokemon, setNewPokemon] = useState('');
     const [pokemonIMG, setPokemonIMG] = useState(pokebolinha);
     const [pokemonName, setPokemonName] = useState('waiting...');
-    const [pokemonType, setPokemonType] = useState('');
-    const [firstEvolutionImg, setfirstEvolutionImg] = useState('');
+    const [pokemonType, setPokemonType] = useState('-');
+    const [firstEvolutionImg, setfirstEvolutionImg] = useState(max_lv);
     const [corNome, setcorNome] = useState('black');
-    const [infoPkm, setInfoPkm] = useState('')
+    const [infoPkm, setInfoPkm] = useState('-')
 
     
     async function getPokemon(event : FormEvent){
@@ -149,10 +149,11 @@ const Pokedex: React.FC = () => {
                 <Imagem src={pokemonIMG} alt="pokemon" />
             </MainPkm>
             <InfoPkm>
-                <TypeInfo>{pokemonType}</TypeInfo>
-                <Infoh1>{infoPkm}</Infoh1>
+                <TypeInfo>Type: {pokemonType}</TypeInfo>
+                <Infoh1>Info: {infoPkm}</Infoh1>
+                <TextEV>Evolves to:</TextEV>
+                <Imagemev src={firstEvolutionImg}/>
             </InfoPkm>
-            <Imagemev src={firstEvolutionImg}/>
         </>
     );
 };
