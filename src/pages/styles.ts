@@ -22,6 +22,14 @@ export const Form = styled.form`
         &::placeholder {
             color: #a8a8b3;;
         }}
+    
+    p {
+        font-size: 20px;
+        position: absolute;
+        top: 75px;
+        left: 10px;
+        color: white;
+    }
 
     .search-btn {
     width: 70px;

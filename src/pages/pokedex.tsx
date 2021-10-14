@@ -57,12 +57,12 @@ const Pokedex: React.FC = () => {
     const [evolutionName, setEvolutionName] = useState('');
     const [corNome, setcorNome] = useState('black');
     const [infoPkm, setInfoPkm] = useState('-')
-
+    const [searchAlert, setsearchAlert] = useState('');
     
     async function getPokemon(event : FormEvent){
         event.preventDefault();
 
-        if (newPokemon === '') {
+        if (newPokemon === '' || newPokemon === ' ') {
             setNewPokemon('')
             setPokemonIMG(pokebolinha);
             setPokemonName('waiting...');
@@ -70,7 +70,9 @@ const Pokedex: React.FC = () => {
             setEvolutionIMG(max_lv);
             setEvolutionName('');
             setcorNome('black');
-            setInfoPkm('-')
+            setInfoPkm('-');
+            setsearchAlert('Este pokemon não existe')
+
         } else {
         //Pesquisas Api
         const response = await api.get<Pokemon>(`pokemon/${newPokemon}`);
@@ -137,8 +139,9 @@ const Pokedex: React.FC = () => {
             setEvolutionName(evolutionChain.data.species.name)
         } else {
             setEvolutionIMG(pokebolinha)
-        }}
+        }
         setNewPokemon('')
+        setsearchAlert('')}
     }
 
 
@@ -180,6 +183,9 @@ const Pokedex: React.FC = () => {
                         className='search-btn'>
                     <HiSearch className='search-icon' size="40px"/>
                     </button>
+                    <p>
+                        {searchAlert}
+                    </p>
                     <button
                         className='evolution-btn'
                         value= {evolutionName}
