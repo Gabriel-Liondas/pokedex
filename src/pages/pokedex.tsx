@@ -61,8 +61,7 @@ const Pokedex: React.FC = () => {
     
     async function getPokemon(event : FormEvent){
         event.preventDefault();
-
-        if (newPokemon === '' || newPokemon === ' ') {
+        if (!newPokemon) {
             setNewPokemon('')
             setPokemonIMG(pokebolinha);
             setPokemonName('waiting...');
@@ -71,9 +70,11 @@ const Pokedex: React.FC = () => {
             setEvolutionName('');
             setcorNome('black');
             setInfoPkm('-');
-            setsearchAlert('Este pokemon não existe')
+            setsearchAlert('Escreva o nome do pokemon')
+            return
+        }
 
-        } else {
+        try {
         //Pesquisas Api
         const response = await api.get<Pokemon>(`pokemon/${newPokemon}`);
         const speciesResponse = await api.get<Species>(`pokemon-species/${newPokemon}`);
@@ -146,7 +147,18 @@ const Pokedex: React.FC = () => {
             setEvolutionName('')
         }
         setNewPokemon('')
-        setsearchAlert('')}
+        setsearchAlert('')
+        } catch(err) {
+            setNewPokemon('')
+            setPokemonIMG(pokebolinha);
+            setPokemonName('waiting...');
+            setPokemonType('-');
+            setEvolutionIMG(max_lv);
+            setEvolutionName('');
+            setcorNome('black');
+            setInfoPkm('-');
+            setsearchAlert('Este pokemon não existe')
+        }
     }
 
 
