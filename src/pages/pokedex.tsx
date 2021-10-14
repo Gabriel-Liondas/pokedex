@@ -114,9 +114,11 @@ const Pokedex: React.FC = () => {
         if (evolChain.evolves_to === undefined) {
             setEvolutionIMG(max_lv)
             setNewPokemon('')
+            setEvolutionName('')
         } else if (evolChain.evolves_to[0] == null) {
             setEvolutionIMG(max_lv)
             setNewPokemon('')
+            setEvolutionName('')
         } else if (evolChain.evolves_to[0].evolves_to[0] == null && evolChain.evolves_to[0].species.name != pokemon.species.name) {
             const evolutionChain = await api.get<Pokemon>(`pokemon/${evolChain.evolves_to[0].species.name}`)
             setEvolutionIMG(evolutionChain.data.sprites.front_default)
@@ -124,6 +126,7 @@ const Pokedex: React.FC = () => {
         } else if (evolChain.evolves_to[0].evolves_to[0] == null && evolChain.evolves_to[0].species.name == pokemon.species.name) {
             setEvolutionIMG(max_lv)
             setNewPokemon('')
+            setEvolutionName('')
         } else if (evolChain.evolves_to[0].species.name != pokemon.species.name) {
             if (evolChain.evolves_to[0].evolves_to[0].species.name != pokemon.species.name) {
                 const evolutionChain = await api.get<Pokemon>(`pokemon/${evolChain.evolves_to[0].species.name}`)
@@ -132,6 +135,7 @@ const Pokedex: React.FC = () => {
             } else {
                 setEvolutionIMG(max_lv)
                 setNewPokemon('')
+                setEvolutionName('')
             }
         } else if (evolChain.evolves_to[0].species.name == pokemon.species.name) {
             const evolutionChain = await api.get<Pokemon>(`pokemon/${evolChain.evolves_to[0].evolves_to[0].species.name}`)
@@ -139,6 +143,7 @@ const Pokedex: React.FC = () => {
             setEvolutionName(evolutionChain.data.species.name)
         } else {
             setEvolutionIMG(pokebolinha)
+            setEvolutionName('')
         }
         setNewPokemon('')
         setsearchAlert('')}
